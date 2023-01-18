@@ -1,0 +1,12 @@
+{
+    "name": "patip/project-web",
+    "autoload": {
+        "psr-4": {
+            "Web\\": "src/"
+        }
+    },
+    "require": {
+        "claviska/simpleimage": "^2.5"
+    }
+
+}

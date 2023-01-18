@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS attendance ;
+CREATE TABLE attendance  (
+	user_id INT ZEROFILL NOT NULL,
+	day DATETIME DEFAULT CURRENT_TIMESTAMP,
+	title VARCHAR(10) DEFAULT 'Present'
+);
+INSERT INTO attendance (user_id)
+VALUES ( 0000000001);
