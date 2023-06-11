@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+
+  #Nginx
+  nginx:
+    image: nginx:latest
+    working_dir: /var/www/html/
+    ports:
+     - 8080:80
+    expose:
+      - 80
+    volumes:
+     #- ./default.conf:/etc/nginx.conf:ro
+     - ./:/var/www/html/
+    depends_on:
+     - php
+    networks:
+      - mynetwork
+    #command: [nginx-debug, '-g', 'daemon','off']
+  #PHP
+  php:
+    image: php:7.4-fpm
+    #build:
+    #  context: .
+    #  dockerfile: Dockerfile-php
+    volumes:
+      - ./:/var/www/html/
+    ports:
+      - 9000:9000
+    #depends_on:
+      #- mysql
+    networks:
+      - mynetwork
+    #command: composer install --ignore-platform-reqs
+networks:
+ mynetwork:
+  driver: bridge
