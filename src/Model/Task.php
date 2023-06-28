@@ -46,6 +46,7 @@ Class Task extends Database {
         //   echo($filters['user_id']);
         //   echo("this is task".$filters['task_id']);
         //   echo("this is title".$filters['title']);
+        //   echo("this is name".$filters['name']);
         //   echo"this is status".($filters['status']);
         $where="";
         if($filters['role']=='manager') {
@@ -57,18 +58,24 @@ Class Task extends Database {
             unset($filters['role']);
             unset($filters['user_id']);
           }
-        if($filters['task_id'] && $filters['task_id']!=0){
+        if($filters['task_id']){
             $where.="AND (tasks.id = :task_id)";
         }else{
             unset($filters['task_id']);
           }
-        if($filters['title'] && $filters['title']!=1){
+        if($filters['title']){
             $where.="AND (tasks.title LIKE :title)";
             $filters['title']="%{$filters['title']}%";
         }else{
             unset($filters['title']);
           }
-        if($filters['status'] && $filters['status']!=2){
+        if($filters['name']) {
+            $where .="AND (members.firstname LIKE :name OR members.lastname LIKE :name)";
+            $filters['name']="%{$filters['name']}%";
+        }else{
+            unset($filters['name']);
+        }
+        if($filters['status']){
             $where.="AND (tasks.status = :status )";
         }else{
             unset($filters['status']);
@@ -94,7 +101,7 @@ Class Task extends Database {
             {$where}
         ORDER BY
         tasks.id
-        desc
+        
          
         ";
         $state = $this->pdo->prepare($sql);
@@ -106,6 +113,10 @@ Class Task extends Database {
             
         $state->bindValue(":title",$filters['title']);
         }
+        if(isset($filters['name'])){
+            
+          $state->bindValue(":name",$filters['name']);
+          }
         if(isset($filters['status'])){
             $state->bindValue(":status",$filters['status']);
         }

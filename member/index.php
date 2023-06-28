@@ -88,7 +88,7 @@ use Web\Model\Career;
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th>ID</th>
                                     <th>Avatar</th>
                                     <th>Firstname</th>
                                     <th>Lastname</th>

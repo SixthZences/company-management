@@ -60,7 +60,7 @@ class Person extends Database{
       persons
       INNER JOIN users ON persons.user_id = users.user_id AND users.role = 'employee'
     WHERE
-    persons.user_id > 0
+      persons.user_id > 0
     ORDER BY
       persons.user_id
     ";

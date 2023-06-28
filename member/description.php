@@ -46,7 +46,9 @@ $task = $taskObj->getTaskById($_REQUEST);
       section {
       box-sizing: border-box;
       padding-left: 2em;
+      padding-right: 2em;
       padding-top: 1.5em;
+      padding-bottom: 1.5em;
       font-size: 2em;
       width: 35em;
       border-radius: 1em;
@@ -100,18 +102,22 @@ $task = $taskObj->getTaskById($_REQUEST);
 
   ?>      
   <section>
-    <p id="test">Details</p>
-    <p class="liness"></p>
-    <p id="des">Title : <?php echo($task['title']); ?></p>
-    <p id="des">Manager : <?php echo($task['manager_fname']);echo(" ".$task['manager_lname']); ?> Started date : <?php echo($task['started_date']); ?></p><br>
-    <p class="lines"></p>
-    <p id="des01">
-       <?php echo($task['description']); ?>
+    <div>
+      <p id="test">Details</p>
+      <p class="liness"></p>
+      <p id="des">Title : <?php echo($task['title']); ?></p>
+      <p id="des">Manager : <?php echo($task['manager_fname']);echo(" ".$task['manager_lname']); ?> Started date : <?php echo($task['started_date']); ?></p><br>
+      <p class="lines"></p>
+      <p id="des01">
+      <?php echo($task['description']); ?>
     </p>
     <br>
     <p class="lines"></p> 
+    </div>
     <div>
+      <center>
       <a href="tasks.php" class="btn btn-success mf-2">Back</a>
+      </center>
       </div>
     </section> 
    
